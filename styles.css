@@ -29,7 +29,7 @@
 */
 
 /* TODO 1:
-  - Define CSS variables on :root for brand colors:
+   - Define CSS variables on :root for brand colors:
       1. Define --brand variable and set a color value of #2563eb for primary UI elements
       2. Define --brand-dark variable and set a darker color value of #1d4ed8 for hover states
   - Apply a global box-sizing reset using the universal selector (hint use * selector).
@@ -72,6 +72,10 @@
 
 /* Base CSS (already provided for you).*/
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
@@ -83,6 +87,8 @@ body {
 }
 
 :root {
+  --brand: #2563eb;        /* primary */
+  --brand-dark: #1d4ed8;   /* hover */
   --muted: #6b7280;        /* muted text */
   --bg: #f6f7fb;           /* page background */
   --card: #ffffff;         /* card/background surfaces */
@@ -90,8 +96,13 @@ body {
 
 .site-header,
 .site-footer {
+  background: var(--card);
   text-align: center;
   padding: 1.25rem;
+}
+
+.tagline {
+  color: var(--muted);
 }
 
 .container {
@@ -108,14 +119,80 @@ body {
   margin-block: 1rem;
 }
 
+.color-demo .color-note {
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.color-demo .muted {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.bg-sample {
+  width: 100%;
+  min-height: 80px;
+  padding: 0.75rem;
+  margin-block: 0.75rem;
+  border-radius: 12px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--brand), #22c55e);
+}
+
+.inline-label {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.inline-label.alt {
+  display: inline-block;
+  border-style: dashed;
+}
+
 .box-row {
   display: flex;
   gap: 1rem;
 }
 
 .toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem;
   border: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: var(--brand);
+  color: #ffffff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--brand-dark);
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.product-grid .item {
+  flex: 1 1 140px;
+  min-height: 90px;
+  background: rgba(37, 99, 235, 0.08);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
 }
 
 .position-stage {
@@ -128,6 +205,18 @@ body {
 
 .card {
   box-shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
+}
+
+.copy .title {
+  font-size: 1.35rem;
+  font-weight: 650;
+  text-transform: capitalize;
+}
+
+.copy .intro {
+  font-style: italic;
+  line-height: 1.7;
+  margin-top: 0.25rem;
 }
 
 .copy .sample-text {
@@ -168,6 +257,13 @@ body {
 .b3 {
   background: rgba(245, 158, 11, 0.12);
   border-color: rgba(245, 158, 11, 0.55);
+}
+
+.static-box {
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.05);
+  margin-bottom: 0.5rem;
 }
 
 .relative-box {
